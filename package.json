@@ -1,0 +1,7 @@
+{
+	"name" : "trello-burndown",
+	"version": "0.0.1-beta",
+	"dependencies" : {
+		"express" : ""		
+	}
+}
