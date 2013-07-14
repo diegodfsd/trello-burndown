@@ -1,7 +1,10 @@
 {
 	"name" : "trello-burndown",
-	"version": "0.0.1-beta",
+	"description" : "A simple app to generate burndown chart using data of your Trello account.",
+	"version" : "0.0.1-beta",
+	"author" : "Diego Dias <diego.dfsd@gmail.com>",
+	"private" : true,
 	"dependencies" : {
-		"express" : ""		
+		"express" : "3"
 	}
 }
