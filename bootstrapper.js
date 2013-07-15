@@ -25,7 +25,6 @@ module.exports = function(main){
 			path;
 		
 		// set view path
-		// set views for error and 404 pages
 		app.set('views', __dirname + '/app/views/' + resourceName);
 			
 		// map before filter	
