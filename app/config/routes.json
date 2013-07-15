@@ -1,0 +1,6 @@
+[
+	{ "controller": "home",
+   	  "routes": [
+		{ "method": "get", "path": "/", "respondWith" : "index" }]
+	}
+]
