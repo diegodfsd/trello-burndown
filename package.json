@@ -5,6 +5,8 @@
 	"author" : "Diego Dias <diego.dfsd@gmail.com>",
 	"private" : true,
 	"dependencies" : {
-		"express" : "3"
+		"express" : "3",
+		"underscore" : "*",
+		"ejs": "0"
 	}
 }
