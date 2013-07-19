@@ -8,6 +8,7 @@
 		"express" : "3",
 		"underscore" : "*",
 		"ejs": "0",
-		"oauth" : "0"
+		"oauth" : "0",
+		"restify" : "2"
 	}
 }
