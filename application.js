@@ -1,5 +1,6 @@
 var express = require('express'),
-	app = express();
+	app = express(),
+	config = require('./app/config/configurations')();
 	
 	// map .renderFile to ".html" files
 	app.engine('html', require('ejs').renderFile);
@@ -15,7 +16,7 @@ var express = require('express'),
 	app.use(express.static(__dirname + '/public'));
 
 	// session support
-	app.use(express.cookieParser('some secret here'));
+	app.use(express.cookieParser(config.cookieSecret));
 	app.use(express.session());
 
 	// parse request bodies (req.body)
@@ -29,6 +30,6 @@ var express = require('express'),
 
 	// run
 	if (!module.parent) {
-	  app.listen(3000);
-	  console.log('\n  listening on port 3000\n');
+	  app.listen(config.port);
+	  console.log('\n  listening on port ' + config.port + '\n');
 	}
