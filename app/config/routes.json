@@ -2,5 +2,10 @@
 	{ "controller": "home",
    	  "routes": [
 		{ "method": "get", "path": "/", "respondWith" : "index" }]
+	},
+	
+	{ "controller": "account",
+   	  "routes": [
+		{ "method": "get", "path": "/account/signin", "respondWith" : "signin" }]
 	}
 ]
