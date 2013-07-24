@@ -1,5 +1,5 @@
 [
-	{ "controller": "home",
+	{ "controller": "dashboard",
    	  "routes": [
 		{ "method": "get", "path": "/", "respondWith" : "index" }]
 	},

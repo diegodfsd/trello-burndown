@@ -6,8 +6,13 @@
 		return [{
 			path: '/',
 			action: function(req, res, next){
-				console.log('filter');
-				next();
+				//is authenticated
+				if(!!req.signedCookies.auth){
+					next();
+				}
+
+				//is not authenticated
+				res.redirect('/account/signin');
 			}			
 		}];		
 	}
