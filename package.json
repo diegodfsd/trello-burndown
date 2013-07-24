@@ -9,6 +9,8 @@
 		"underscore" : "*",
 		"ejs": "0",
 		"oauth" : "0",
-		"restify" : "2"
+		"restify" : "2",
+		"zombie" : "latest",
+		"jasmine-node" : "latest"
 	}
 }
