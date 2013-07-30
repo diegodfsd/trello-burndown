@@ -1,11 +1,11 @@
 [
 	{ "controller": "dashboard",
    	  "routes": [
-		{ "method": "get", "path": "/", "respondWith" : "index" }]
+		{ "method": "get", "path": "/", "action" : "index" }]
 	},
 	
-	{ "controller": "account",
+	{ "controller": "sessions",
    	  "routes": [
-		{ "method": "get", "path": "/account/signin", "respondWith" : "signin" }]
+		{ "method": "get", "path": "/account/signin", "action" : "signin" }]
 	}
 ]

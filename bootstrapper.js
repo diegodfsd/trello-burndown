@@ -47,7 +47,7 @@ module.exports = function(main){
 		
 		if(!!resources){
 			resources.forEach(function(resource){
-				app[resource.method](resource.path, controller[resource.respondWith]);
+				app[resource.method](resource.path, controller[resource.action]);
 			});	
 		}
 
