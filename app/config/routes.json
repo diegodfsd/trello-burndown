@@ -6,6 +6,7 @@
 	
 	{ "controller": "sessions",
    	  "routes": [
-		{ "method": "get", "path": "/account/signin", "action" : "signin" }]
+		{ "method": "get", "path": "/sessions/signin", "action" : "signin" },
+		{ "method": "get", "path": "/sessions/callback", "action" : "callback" }]		
 	}
 ]

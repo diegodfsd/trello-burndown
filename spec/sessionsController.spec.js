@@ -6,14 +6,20 @@ var Browser = require("zombie"),
  
 describe("sign in", function() {
 	
-	before(function () {
-		this.browser = new Browser();
+	beforeEach(function () {
+		browser = new Browser({site: "http://localhost:3000"});
 	});
 	
- 	it("should be redirect to signin page when is not authenticated", function (next) {
-		browser.visit('http://localhost:3000/', function (err) {
-			expect(browser.url).toBe("http://localhost:3000/account/signin");
+ 	it("when is not authenticated should be redirect to signin page", function (next) {
+		browser.visit("/", function (err) {
+			expect(browser.redirected).toBe(true);
+			expect(browser.url).toContain("/sessions/signin");
 			next();
 		});
  	});
+
+	
+	it("should be authenticate with trello", function (next) {
+		next();	
+	});
 });

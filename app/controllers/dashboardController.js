@@ -12,7 +12,7 @@
 				}
 
 				//is not authenticated
-				res.redirect('/account/signin');
+				res.redirect('/sessions/signin');
 			}			
 		}];		
 	}
