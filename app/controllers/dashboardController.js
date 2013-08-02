@@ -1,5 +1,6 @@
 (function () {
-	var self = this;
+	var self = this,
+		config = require(__dirname + '../../config/configurations')();
 	
 	// set before filter
 	exports.before_filters = function () {
@@ -7,7 +8,7 @@
 			path: '/',
 			action: function(req, res, next){
 				//is authenticated
-				if(!!req.signedCookies.auth){
+				if(!!req.signedCookies[config.cookieAuthName]){
 					next();
 				}
 
