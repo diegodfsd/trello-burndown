@@ -1,0 +1,15 @@
+module.exports = function(environment){
+	var environments = {
+		development: {
+			applicationName: "trello burndown development",
+			expirationToken: "1hour|1day|30days|never",
+			port: 3000,
+			cookieSecret:'',
+			applicationKey: '',
+			applicationToken: '',
+			cookieAuthName: ''
+		}
+	};
+
+	return environments[environment || 'development'];
+};
