@@ -4,6 +4,7 @@
 	"version" : "0.0.1-beta",
 	"author" : "Diego Dias <diego.dfsd@gmail.com>",
 	"private" : true,
+	"keywords" : ["trello", "burndown"],
 	"dependencies" : {
 		"express" : "3",
 		"underscore" : "*",
@@ -11,6 +12,7 @@
 		"oauth" : "0",
 		"restify" : "2",
 		"zombie" : "latest",
-		"jasmine-node" : "latest"
+		"jasmine-node" : "latest",
+		"mongoose" : "3"
 	}
 }
