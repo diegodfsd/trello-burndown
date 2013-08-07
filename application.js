@@ -1,6 +1,7 @@
 var express = require('express'),
 	app = express(),
-	config = require('./app/config/configurations')();
+	config = require('./app/config/configurations')()
+	mongoose = require('mongoose');
 	
 	// map .renderFile to ".html" files
 	app.engine('html', require('ejs').renderFile);
@@ -25,8 +26,17 @@ var express = require('express'),
 	// support _method (PUT in forms etc)
 	app.use(express.methodOverride());
 
+	// start mongoose
+	mongoose.connect(config.mongodbConnectionString);
+
 	// load controllers
 	require('./bootstrapper')(app);
+	
+	// attach lister to connected event
+	mongoose.connection.once('connected', function() {
+		console.log("Connected to mongodb");
+	});
+	
 
 	// run
 	if (!module.parent) {
