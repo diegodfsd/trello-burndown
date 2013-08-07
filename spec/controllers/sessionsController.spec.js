@@ -1,4 +1,4 @@
-require('./support/spec_helper');
+require(__dirname + '../../support/spec_helper');
 
 var Browser = require("zombie"),
 	browser;
