@@ -2,3 +2,5 @@
 .gitkeep
 /node_modules
 **/config/configurations.js
+data/
+data/*
