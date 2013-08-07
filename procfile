@@ -1,1 +1,2 @@
 web: supervisor application.js
+db: mongod --dbpath data/db --port 12345
