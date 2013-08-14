@@ -10,7 +10,7 @@
 		"underscore" : "*",
 		"ejs": "0",
 		"oauth" : "0",
-		"restify" : "2",
+		"rest" : "0",
 		"zombie" : "latest",
 		"jasmine-node" : "latest",
 		"mongoose" : "3"
