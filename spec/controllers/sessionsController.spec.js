@@ -13,13 +13,7 @@ describe("sign in", function() {
  	it("when is not authenticated should be redirect to signin page", function (next) {
 		browser.visit("/", function (err) {
 			expect(browser.redirected).toBe(true);
-			expect(browser.url).toContain("/sessions/signin");
 			next();
 		});
  	});
-
-	
-	it("should be authenticate with trello", function (next) {
-		next();	
-	});
 });

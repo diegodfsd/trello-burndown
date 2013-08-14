@@ -9,7 +9,7 @@
 			action: function(req, res, next){
 				//is authenticated
 				if(!!req.signedCookies[config.cookieAuthName]){
-					next();
+					return next();
 				}
 
 				//is not authenticated
