@@ -7,12 +7,12 @@ var mongoose = require('mongoose'),
 	
 userSchema = new Schema({
 	username:  { type: String, index: true, lowercase: true, trim: true },
-	name: String,
-	accessToken: String,
-	accessTokenSecret: String,
+	name: [String],
+	accessToken: [String],
+	accessTokenSecret: [String],
 	createdAt: { type: Date, default: Date.now },
-	email: String,
-	gravatarHash: String
+	email: [String],
+	gravatarHash: [String]
 });
 
 userSchema.virtual('avatar').get(function () {
