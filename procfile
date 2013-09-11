@@ -1,2 +1,2 @@
-web: supervisor application.js
+web: supervisor NODE_ENV=development application.js
 db: mongod --dbpath data/db --port 12345
