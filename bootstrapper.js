@@ -13,14 +13,6 @@ module.exports = function(main){
 		var controller = require('./app/controllers/' + name),
 			app = express(),
 			resourceName = name.replace('Controller.js', ''),
-			defaultRoutes = [{ method: 'get', path: '/', respondWith : 'index' },
-							 { method: 'get', path: '/:id', respondWith : 'show' },
-							 { method: 'get', path: '/new', respondWith : 'new' },
-							 { method: 'post', path: '/create', respondWith : 'create' },
-							 { method: 'get', path: '/edit/:id', respondWith : 'edit' },
-							 { method: 'put', path: '/:id', respondWith : 'update' },
-							 { method: 'delete', path: '/:id', respondWith : 'destroy' }],
-			currentRoutes,
 			resources,
 			path;
 		
@@ -37,13 +29,7 @@ module.exports = function(main){
 		}
 		
 		// set routes
-		currentRoutes = _.findWhere(routes, { controller: resourceName });
-		resources = currentRoutes? currentRoutes.routes : defaultRoutes.map(function(route){
-			var relativePath = '/' + resourceName + route.path;
-			
-			return _.extend(route, { path: relativePath });
-		});
-
+		resources = _.findWhere(routes, { controller: resourceName });
 		
 		if(!!resources){
 			resources.forEach(function(resource){
