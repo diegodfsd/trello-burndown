@@ -41,5 +41,5 @@ var express = require('express'),
 	// run
 	if (!module.parent) {
 	  app.listen(config.port);
-	  console.log('\n  listening on port ' + config.port + '\n');
+	  console.log('Express server listening on port %d in %s mode', app.address().port, app.settings.env);
 	}
