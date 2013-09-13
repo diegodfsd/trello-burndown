@@ -13,6 +13,7 @@
 		"rest" : "0",
 		"zombie" : "latest",
 		"jasmine-node" : "latest",
-		"mongoose" : "3"
+		"mongoose" : "3",
+		"node-compass" : "0"
 	}
 }

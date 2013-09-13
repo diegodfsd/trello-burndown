@@ -1,7 +1,8 @@
 var express = require('express'),
 	app = express(),
-	config = require('./app/config/configurations')()
-	mongoose = require('mongoose');
+	config = require('./app/config/configurations')(),
+	mongoose = require('mongoose'),
+	compass = require('node-compass');
 	
 	// map .renderFile to ".html" files
 	app.engine('html', require('ejs').renderFile);
@@ -25,6 +26,9 @@ var express = require('express'),
 
 	// support _method (PUT in forms etc)
 	app.use(express.methodOverride());
+
+	// set compass
+	app.use(compass());
 
 	// start mongoose
 	mongoose.connect(config.mongodbConnectionString);
