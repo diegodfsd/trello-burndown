@@ -29,7 +29,7 @@ module.exports = function(main){
 		}
 		
 		// set routes
-		resources = _.findWhere(routes, { controller: resourceName });
+		resources = _.findWhere(routes, { controller: resourceName }).routes;
 		
 		if(!!resources){
 			resources.forEach(function(resource){
