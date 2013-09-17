@@ -2,20 +2,24 @@ var express = require('express'),
 	app = express(),
 	config = require('./app/config/configurations')(),
 	mongoose = require('mongoose'),
+	exphbs  = require('express3-handlebars'),
 	compass = require('node-compass');
 	
 	// map .renderFile to ".html" files
-	app.engine('html', require('ejs').renderFile);
+	//app.engine('html', require('ejs').renderFile);
 	
 	// make ".html" the default and evict use extensions in render method
-	app.set('view engine', 'html');
-	
+	//app.set('view engine', 'html');
+	app.engine('handlebars', exphbs({defaultLayout: '../../app/views/layouts/layout'}));
+	app.set('view engine', 'handlebars');
+
 	// log
 	// module.parent is a caller
 	if (!module.parent) app.use(express.logger('dev'));
 
 	// serve static files
 	app.use(express.static(__dirname + '/public'));
+	app.set("view options", {layout: "layouts/layout.ejs"});
 
 	// session support
 	app.use(express.cookieParser(config.cookieSecret));
