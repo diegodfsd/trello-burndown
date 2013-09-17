@@ -30,6 +30,15 @@ var express = require('express'),
 	// set compass
 	app.use(compass());
 
+	// set error handler
+	app.configure('development', function(){
+	  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+	});
+
+	app.configure('production', function(){
+	  app.use(express.errorHandler()); 
+	});
+
 	// start mongoose
 	mongoose.connect(config.mongodbConnectionString);
 

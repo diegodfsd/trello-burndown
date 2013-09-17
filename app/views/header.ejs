@@ -3,6 +3,7 @@
 <head>
   <script src="scripts/libs/modernizr.js" type="text/javascript" charset="utf-8"></script>
   <meta charset"UTF-8">	
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-with, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,8 +12,8 @@
   <link rel="stylesheet" href="stylesheets/application.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-	<%- partial("header.ejs") %>
-	<%- body %>
-  <script src="scripts/libs/jquery-1.10.2.js" type="text/javascript" charset="utf-8"></script>
-</body>
-</html>
+	<nav>
+		<ul>
+			<li><img src="<%= user.avatar %>" title="<%= user.name %>"><p><%= user.name %></p></li>
+		</ul>
+	</nav>

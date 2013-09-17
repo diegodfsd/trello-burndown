@@ -6,7 +6,6 @@ require(__dirname + '../../helpers/stringExtensions');
 		tokenSecret,
 		http = require('http'),
 		url = require('url'),
-		crypto = require('crypto'),
 		rest = require('rest'),				  
 		mime = require('rest/interceptor/mime'),
 		OAuth = require('oauth').OAuth,
@@ -25,7 +24,7 @@ require(__dirname + '../../helpers/stringExtensions');
 		
 		
 	// GET: signin
-	exports.signin = function(req, res, next){		
+	exports.signin = function(req, res, next){
 		oauth.getOAuthRequestToken(function(error, token, tokenSecret, results) {
 			var trelloUrl = "#{0}?oauth_token=#{1}&name=#{2}&expiration=#{3}".interpolate(authorizeURL, token, config.applicationName, config.expirationToken);
 			
@@ -41,7 +40,6 @@ require(__dirname + '../../helpers/stringExtensions');
 			token = query.oauth_token,
 		    verifier = query.oauth_verifier,
 			client = rest.chain(mime),
-			hash,
 			user;
 
 			oauth.getOAuthAccessToken(token, self.tokenSecret, verifier, function(error, accessToken, accessTokenSecret, results){
@@ -54,7 +52,7 @@ require(__dirname + '../../helpers/stringExtensions');
 						if (err) return next(err);
 
 						user = usr;
-						if(!usr)
+						if(!user)
 						{
 							user = new User({ username: entity.username, 
 											  name: entity.fullName, 
@@ -68,10 +66,9 @@ require(__dirname + '../../helpers/stringExtensions');
 							});
 						}
 
-						hash = crypto.createHash("md5").update(user.username).digest("hex");
-						res.cookie(config.cookieAuthName, hash, { signed: true });
-				
-						res.redirect('/');						
+						res.cookie(config.cookieAuthName, user.username, { signed: true });
+
+						res.redirect('/');
 					});
 				});
 			});

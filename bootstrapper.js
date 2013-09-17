@@ -24,9 +24,16 @@ module.exports = function(main){
 			var filters = controller.before_filters();
 			
 			filters.forEach(function (filter) {
-				app.all(filter.path,  filter.action);
+				app.all(filter.path,  filter.action);				
 			});
 		}
+		
+		// map global before filter
+		fs.readdirSync(__dirname + '/app/filters').forEach(function(name){
+			var filter = require('./app/filters/' + name);
+			
+			filter.register(app);
+		})
 		
 		// set routes
 		resources = _.findWhere(routes, { controller: resourceName }).routes;
