@@ -6,7 +6,7 @@
 	{
 			app.all('*', function (req, res, next) {
 				// ignored path
-				if(!!req.path.match(/sessions/)){
+				if(!!req.path.match(/(sessions|public)/)){
 					return next();
 				}
 
