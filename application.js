@@ -5,13 +5,9 @@ var express = require('express'),
 	exphbs  = require('express3-handlebars'),
 	compass = require('node-compass');
 	
-	// map .renderFile to ".html" files
-	//app.engine('html', require('ejs').renderFile);
-	
-	// make ".html" the default and evict use extensions in render method
-	//app.set('view engine', 'html');
-	app.engine('handlebars', exphbs({defaultLayout: '../../app/views/layouts/layout'}));
-	app.set('view engine', 'handlebars');
+	// set handlebar as view engine
+	app.engine('.hbs', exphbs({ defaultLayout: '../../app/views/layouts/layout', extname: '.hbs' }));
+	app.set('view engine', '.hbs');
 
 	// log
 	// module.parent is a caller
@@ -19,7 +15,6 @@ var express = require('express'),
 
 	// serve static files
 	app.use(express.static(__dirname + '/public'));
-	app.set("view options", {layout: "layouts/layout.ejs"});
 
 	// session support
 	app.use(express.cookieParser(config.cookieSecret));
