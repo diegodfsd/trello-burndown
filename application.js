@@ -3,7 +3,8 @@ var express = require('express'),
 	config = require('./app/config/configurations')(),
 	mongoose = require('mongoose'),
 	exphbs  = require('express3-handlebars'),
-	compass = require('node-compass');
+	compass = require('node-compass'),
+	path = require('path');
 	
 	// set handlebar as view engine
 	app.engine('.hbs', exphbs({ defaultLayout: '../../app/views/layouts/layout', extname: '.hbs' }));
@@ -13,8 +14,11 @@ var express = require('express'),
 	// module.parent is a caller
 	if (!module.parent) app.use(express.logger('dev'));
 
+	// set log request
+	//app.use(express.logger());
+
 	// serve static files
-	app.use(express.static(__dirname + '/public'));
+	app.use(express.static(__dirname + '/app/public'));
 
 	// session support
 	app.use(express.cookieParser(config.cookieSecret));
@@ -27,7 +31,9 @@ var express = require('express'),
 	app.use(express.methodOverride());
 
 	// set compass
-	app.use(compass());
+	app.use(compass({
+		project: path.join(__dirname, '../app/public')
+	}));
 
 	// set error handler
 	app.configure('development', function(){
