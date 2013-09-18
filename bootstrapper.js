@@ -5,13 +5,14 @@ var express = require('express'),
 module.exports = function(main){
 	// load routes file
 	var routes = fs.readFileSync(__dirname + '/app/config/routes.json', "utf8");
+		
 	routes = JSON.parse(routes);
 	
 	fs.readdirSync(__dirname + '/app/controllers').filter(function(name){
 		return ~name.indexOf('Controller');
 	}).forEach(function(name){
-		var controller = require('./app/controllers/' + name),
-			app = express(),
+		var app = express(),
+			controller = require('./app/controllers/' + name),
 			resourceName = name.replace('Controller.js', ''),
 			resources,
 			path;
@@ -28,13 +29,6 @@ module.exports = function(main){
 			});
 		}
 		
-		// map global before filter
-		fs.readdirSync(__dirname + '/app/filters').forEach(function(name){
-			var filter = require('./app/filters/' + name);
-			
-			filter.register(app);
-		})
-		
 		// set routes
 		resources = _.findWhere(routes, { controller: resourceName }).routes;
 		
@@ -46,4 +40,12 @@ module.exports = function(main){
 
 		main.use(app);
 	});
+	
+	// map global before filters
+	fs.readdirSync(__dirname + '/app/filters').forEach(function(name){
+		var filter = require('./app/filters/' + name),
+			app = express();
+		
+		filter.register(app);
+	})
 };
