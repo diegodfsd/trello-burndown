@@ -29,6 +29,13 @@ module.exports = function(main){
 			});
 		}
 		
+		// map global before filters for each controllers
+		fs.readdirSync(__dirname + '/app/filters').forEach(function(name){
+			var filter = require('./app/filters/' + name);
+		
+			filter.register(app);
+		});
+		
 		// set routes
 		resources = _.findWhere(routes, { controller: resourceName }).routes;
 		
@@ -40,12 +47,4 @@ module.exports = function(main){
 
 		main.use(app);
 	});
-	
-	// map global before filters
-	fs.readdirSync(__dirname + '/app/filters').forEach(function(name){
-		var filter = require('./app/filters/' + name),
-			app = express();
-		
-		filter.register(app);
-	})
 };
