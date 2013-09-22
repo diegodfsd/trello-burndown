@@ -14,6 +14,6 @@
 		"zombie" : "latest",
 		"jasmine-node" : "latest",
 		"mongoose" : "3",
-		"node-compass" : "0"
+		"node-sass" : "*"
 	}
 }

@@ -3,7 +3,7 @@ var express = require('express'),
 	config = require('./app/config/configurations')(),
 	mongoose = require('mongoose'),
 	exphbs  = require('express3-handlebars'),
-	compass = require('node-compass'),
+	sass = require('node-sass'),
 	path = require('path');
 	
 	// set handlebar as view engine
@@ -19,6 +19,13 @@ var express = require('express'),
 
 	// serve static files
 	app.use(express.static(__dirname + '/app/public'));
+	
+	// set sass middleware
+	app.use(sass.middleware({
+	     src: __dirname + '/app/public/sass',
+	     dest: __dirname + '/app/public', 
+	     debug: true
+	  }));
 
 	// session support
 	app.use(express.cookieParser(config.cookieSecret));
@@ -29,11 +36,6 @@ var express = require('express'),
 
 	// support _method (PUT in forms etc)
 	app.use(express.methodOverride());
-
-	// set compass
-	app.use(compass({
-		project: path.join(__dirname, '../app/public')
-	}));
 
 	// set error handler
 	app.configure('development', function(){
