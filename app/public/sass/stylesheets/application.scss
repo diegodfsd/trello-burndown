@@ -1,8 +1,6 @@
 body {
   color: #202020;
   font-family: "Lucida Grande", Verdana, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 a {
@@ -47,16 +45,6 @@ li{
 .container {
 	margin: 0 auto;
 	width: 960px;
-}
-
-.container:after, 
-.container:before {
-	content: " ";
-	display: table;
-}
-
-.clearfix:after {
-	clear: both;
 }
 
 .navbar {
