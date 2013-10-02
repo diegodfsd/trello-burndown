@@ -1,0 +1,25 @@
+// Grays
+// -------------------------
+$gray-darker:            lighten(#000, 13.5%); // #222
+$gray-dark:              lighten(#000, 20%);   // #333
+$gray:                   lighten(#000, 33.5%); // #555
+$gray-light:             lighten(#000, 60%);   // #999
+$gray-lighter:           lighten(#000, 93.5%); // #eee
+
+// Primite colors
+// -------------------------
+$black: #000;
+$white: #fff;
+$blue: #142dd4;
+
+// Scaffolding
+// -------------------------
+$main-color: #202020;
+
+// Typography
+// -------------------------
+$font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+
+// Container sizes 
+// -------------------------
+$content-width: 960px;

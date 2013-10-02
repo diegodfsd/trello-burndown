@@ -1,12 +1,26 @@
+/**
+*
+* Generate box-shadow outset css3 cross-browser
+*
+* reference
+* http://www.w3schools.com/cssref/css3_pr_box-shadow.asp
+*
+**/
+/**
+* Generate transition css3 cross-browser
+*
+**/
 body {
   color: #202020;
-  font-family: "Lucida Grande", Verdana, Arial, sans-serif;
-  margin: 0;
-  padding: 0; }
+  font-family: "Lucida Grande", Verdana, Arial, sans-serif; }
 
 a {
   color: black;
   text-decoration: none;
+  -webkit-transition: color 0.3s linear;
+  -moz-transition: color 0.3s linear;
+  -ms-transition: color 0.3s linear;
+  -o-transition: color 0.3s linear;
   transition: color 0.3s linear; }
 
 a:hover {
@@ -32,19 +46,14 @@ li {
 #header {
   padding: 5px;
   text-shadow: 0 1px 0 white;
-  background-color: #f3f3f3;
-  box-shadow: 1px 3px 1px rgba(80, 80, 80, 0.25); }
+  background-color: #eeeeee;
+  -moz-box-shadow: 1px 3px 1px rgba(80, 80, 80, 0.25) 2px 0 black 0;
+  -webkit-box-shadow: 1px 3px 1px rgba(80, 80, 80, 0.25) 2px 0 black 0;
+  box-shadow: 1px 3px 1px rgba(80, 80, 80, 0.25) 2px 0 black 0; }
 
 .container {
   margin: 0 auto;
   width: 960px; }
-
-.container:after, .container:before {
-  content: " ";
-  display: table; }
-
-.clearfix:after {
-  clear: both; }
 
 .navbar {
   display: fixed;
@@ -65,4 +74,6 @@ li {
 .user-links .account img {
   border: 2px solid white;
   vertical-align: middle;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); }
+  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3) 2px 0 black 0;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3) 2px 0 black 0;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3) 2px 0 black 0; }
