@@ -16,9 +16,6 @@ var express = require('express'),
 
 	// set log request
 	//app.use(express.logger());
-
-	// serve static files
-	app.use(express.static(__dirname + '/app/public'));
 	
 	// set sass middleware
 	app.use(sass.middleware({
@@ -26,6 +23,9 @@ var express = require('express'),
 	     dest: __dirname + '/app/public', 
 	     debug: true
 	  }));
+	  
+  	// serve static files
+  	app.use(express.static(__dirname + '/app/public'));
 
 	// session support
 	app.use(express.cookieParser(config.cookieSecret));
