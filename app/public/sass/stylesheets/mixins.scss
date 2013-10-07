@@ -6,10 +6,10 @@
 * http://www.w3schools.com/cssref/css3_pr_box-shadow.asp
 *
 **/
-@mixin box-shadow($hshadow: 2px, $vshadow: 2px, $blur: 0, $spread: 0, $color: #000) {
-	-moz-box-shadow: $hshadow $vshadow $blur $color $spread;
-	-webkit-box-shadow: $hshadow $vshadow $blur $color $spread;
-	box-shadow: $hshadow $vshadow $blur $color $spread;
+@mixin box-shadow($hor, $ver, $blur, $color, $spread: 0) {
+	-moz-box-shadow: $hor $ver $blur $color;
+	-webkit-box-shadow: $hor $ver $blur $color;
+	box-shadow: $hor $ver $blur $color;
 }
 
 /**
@@ -22,4 +22,21 @@
 	-ms-transition: $property $duration $timing;
 	-o-transition: $property $duration $timing;
 	transition: $property $duration $timing;
+}
+
+/**
+* Generate border-radius css3 cross-browser
+*
+**/
+@mixin border-radius($size) {
+	-moz-border-radius: $size;
+	-webkit-border-radius: $size;
+	border-radius: $size;
+}
+
+@mixin rotate($degree) {
+	-o-transform:rotate($degree);  
+	-webkit-transform:rotate($degree);  
+	-moz-transform:rotate($degree);
+	transform:rotate($degree);
 }

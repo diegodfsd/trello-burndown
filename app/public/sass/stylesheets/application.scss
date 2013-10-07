@@ -13,7 +13,6 @@ a {
 }
 
 a:hover {
-	text-decoration: underline;	
 	color: $blue;
 }
 
@@ -28,7 +27,7 @@ li {
 }
 
 li{
-	float: left;
+	padding: 0 3px;
 }
 
 #main {
@@ -40,9 +39,16 @@ li{
 
 #header {
 	padding: 5px;
-	text-shadow: 0 1px 0 $white;
 	background-color: $gray-lighter;
-	@include box-shadow(1px 3px 1px rgba(80, 80, 80, 0.25));
+	@include box-shadow(2px, 3px, 1px, rgba(80, 80, 80, 0.25));
+}
+
+.logo{
+	float: left;
+}
+
+.logo a{
+	font-weight: bold;
 }
 
 .container {
@@ -62,8 +68,12 @@ li{
 	padding: 0;
 }
 
+.user-links li {
+	float: left;
+}
 .user-links a {
 	display: block;
+	text-shadow: 0 2px 0 $white;
 }
 
 .user-links .account small {
@@ -73,5 +83,64 @@ li{
 .user-links .account img {
 	border: 2px solid $white;
 	vertical-align: middle;
-	@include box-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+	@include box-shadow(1px, 1px, 3px, rgba(0, 0, 0, 0.3));
+}
+
+.separator{
+	border-left: solid 1px $gray;
+}
+
+.dashboard section.sprints {
+	margin-bottom: 30px;
+}
+
+.dashboard section.sprints article.card {
+	background-color: $postit-yellow;
+	width: 210px;
+	height: 180px;
+	float: left;
+	margin: 0 20px 20px 0;
+	position: relative;
+	padding: 15px;
+	overflow: hidden;
+	text-rendering: optimizeLegibility;
+	@include box-shadow(5px, 5px, 7px, rgba(0, 0, 0, 0.3));
+	@include border-radius(3px);
+}
+
+.dashboard section.sprints article.card {
+	@include rotate(-4deg);
+}
+
+.dashboard section.sprints article.card:nth-child(even) {
+	@include rotate(4deg);
+}
+
+.dashboard section.sprints article.card:nth-child(3n-1) {
+	background-color: $postit-green;
+}
+
+.dashboard section.sprints article.card:nth-child(4n-1) {
+	background-color: $postit-purple;
+}
+
+.dashboard section.sprints article.card:nth-child(10n-1) {
+	background-color: $postit-rose;
+}
+
+.dashboard section.sprints article.card a:hover {
+	color: $black;
+}
+
+.dashboard section.sprints article.card h5 {
+	font-size: 19px;
+	margin: 0 0 3px;
+	line-height: 1.1em;
+	word-wrap: break-word;
+}
+
+.dashboard section.sprints article.card p {
+	font-size: 16px;
+	line-height: 1.2em;
+	word-wrap: break-word;
 }
