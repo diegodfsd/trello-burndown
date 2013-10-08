@@ -94,7 +94,8 @@ li {
   border-left: solid 1px #555555; }
 
 .dashboard section.sprints {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  font-family: 'Swanky and Moo Moo', cursive; }
 
 .dashboard section.sprints article.card {
   background-color: #fffecc;
@@ -126,13 +127,13 @@ li {
   transform: rotate(4deg); }
 
 .dashboard section.sprints article.card:nth-child(3n-1) {
-  background-color: #c5eac5; }
+  background-color: #ccffcc; }
 
 .dashboard section.sprints article.card:nth-child(4n-1) {
-  background-color: #ccccfb; }
+  background-color: #29a5de; }
 
 .dashboard section.sprints article.card:nth-child(10n-1) {
-  background-color: #ee5e9f; }
+  background-color: #ccccfb; }
 
 .dashboard section.sprints article.card a:hover {
   color: black; }

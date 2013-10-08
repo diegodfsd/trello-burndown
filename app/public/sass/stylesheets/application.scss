@@ -92,6 +92,7 @@ li{
 
 .dashboard section.sprints {
 	margin-bottom: 30px;
+	font-family: 'Swanky and Moo Moo', cursive;
 }
 
 .dashboard section.sprints article.card {
@@ -121,11 +122,11 @@ li{
 }
 
 .dashboard section.sprints article.card:nth-child(4n-1) {
-	background-color: $postit-purple;
+	background-color: $postit-blue;
 }
 
 .dashboard section.sprints article.card:nth-child(10n-1) {
-	background-color: $postit-rose;
+	background-color: $postit-purple;
 }
 
 .dashboard section.sprints article.card a:hover {
