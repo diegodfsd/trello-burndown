@@ -44,7 +44,7 @@ module.exports = function(main){
 				app[resource.method](resource.path, controller[resource.action]);
 			});	
 		}
-
+		
 		main.use(app);
 	});
 };

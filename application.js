@@ -4,7 +4,8 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	exphbs  = require('express3-handlebars'),
 	sass = require('node-sass'),
-	path = require('path');
+	path = require('path'),
+	flash = require('connect-flash');
 	
 	// set handlebar as view engine
 	app.engine('.hbs', exphbs({ defaultLayout: '../../app/views/layouts/layout', extname: '.hbs' }));
@@ -29,7 +30,10 @@ var express = require('express'),
 
 	// session support
 	app.use(express.cookieParser(config.cookieSecret));
-	app.use(express.session());
+	app.use(express.session({ cookie: { maxAge: 60000 }}));
+	
+	// set support to flash message
+	app.use(flash());
 
 	// parse request bodies (req.body)
 	app.use(express.bodyParser());
@@ -39,18 +43,18 @@ var express = require('express'),
 
 	// set error handler
 	app.configure('development', function(){
-	  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+	  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 	});
 
 	app.configure('production', function(){
-	  app.use(express.errorHandler()); 
+	  app.use(express.errorHandler());
 	});
+	
+	// load controllers
+	require('./bootstrapper')(app);
 
 	// start mongoose
 	mongoose.connect(config.mongodbConnectionString);
-
-	// load controllers
-	require('./bootstrapper')(app);
 	
 	// attach lister to connected event
 	mongoose.connection.once('connected', function() {
