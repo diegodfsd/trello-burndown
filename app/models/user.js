@@ -1,4 +1,4 @@
-require(__dirname + '../../helpers/stringExtensions');
+require(__dirname + '../../extensions/stringExtensions');
 
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,

@@ -7,18 +7,13 @@ sprintSchema = new Schema({
 	name: { type: String, required: true, index: true },
 	createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
 	board:  { type: String, required: true },
-	startAt: { type: Date, required: true },
-	endAt: { type: Date, required: true },
 	goal: [String],
 	retrospective: [String],
 	createAt: { type: Date, required: true, default: Date.now },
 	active: { type: Boolean, default: true },
-	lists: []
+	doneListName: { type: String, required: true },
+	workDays: [{ dates: { type: Date, required: true } }]
 });
-
-sprintSchema.methods.workingDays = function () {
-	return [];	
-};
 
 Sprint = mongoose.model('sprint', sprintSchema);
 

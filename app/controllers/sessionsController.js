@@ -1,4 +1,4 @@
-require(__dirname + '../../helpers/stringExtensions');
+require(__dirname + '../../extensions/stringExtensions');
 	
 (function () {
 	
@@ -43,8 +43,8 @@ require(__dirname + '../../helpers/stringExtensions');
 			user;
 
 			oauth.getOAuthAccessToken(token, self.tokenSecret, verifier, function(error, accessToken, accessTokenSecret, results){
-				var url = "https://api.trello.com/1/members/me/?key=#{0}&token=#{1}".interpolate(config.applicationKey, accessToken);
-				
+				var url = "#{0}/members/me/?key=#{1}&token=#{2}".interpolate(config.urlAPI, config.applicationKey, accessToken);
+
 				client({ path: url }).then(function (response) {
 					var entity = response.entity;
 					
@@ -61,9 +61,15 @@ require(__dirname + '../../helpers/stringExtensions');
 											  email: entity.email, 
 											  gravatarHash: entity.gravatarHash });
 
-							user.save(function (err) {
-								if (err) return next(err);
-							});
+	  						user.save(function (err) {
+	  							if (err) return next(err);
+	  						});
+						} else {
+							User.update({ username: entity.username }, 
+										{ $set: { accessToken: accessToken, accessTokenSecret: accessTokenSecret }}, 
+										function change(err, numAffected) {
+											console.log( numAffected );
+										});
 						}
 
 						res.cookie(config.cookieAuthName, user.username, { signed: true });
