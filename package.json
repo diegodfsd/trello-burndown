@@ -15,6 +15,8 @@
 		"jasmine-node" : "latest",
 		"mongoose" : "3",
 		"node-sass" : "*",
-		"xcharts" : "0"
+		"xcharts" : "0",
+		"connect-flash" : "*",
+		"select2" : "3"
 	}
 }
