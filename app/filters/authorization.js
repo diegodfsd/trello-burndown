@@ -17,7 +17,7 @@
 					User.findOne({ username: username }, function (err, usr) {
 						if (err) return next(err);
 
-						if(!!usr) { req.user = usr; }
+						if(!!usr) { req.user = res.locals.user = usr; }
 						
 						return next();
 					});
