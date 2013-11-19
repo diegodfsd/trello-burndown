@@ -4,13 +4,13 @@
 
 	exports.register = function(app)
 	{
-			app.all('*', function (req, res, next) {
+			app.all('*', function (req, res, next) {	
 				// ignored path
 				if(!!req.path.match(/(sessions|public)/)){
 					return next();
 				}
 
-				var username = req.signedCookies[config.cookieAuthName];
+				var username = req.cookies[config.cookieAuthName];
 
 				// authenticated
 				if(!!username){

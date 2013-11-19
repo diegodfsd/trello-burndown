@@ -5,7 +5,7 @@
 
 	// GET: Index
 	exports.index = function(req, res, next){
-		req.flash('info', 'Hello there!');
+		req.flash('success', 'Hello there!');
 		res.render('index', { message: 'say hello to express mvc' });
 	};	
 })();

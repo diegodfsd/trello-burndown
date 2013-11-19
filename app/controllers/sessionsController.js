@@ -67,12 +67,11 @@ require(__dirname + '../../extensions/stringExtensions');
 						} else {
 							User.update({ username: entity.username }, 
 										{ $set: { accessToken: accessToken, accessTokenSecret: accessTokenSecret }}, 
-										function change(err, numAffected) {
-											console.log( numAffected );
-										});
+										function change(err, numAffected) { });
 						}
 
-						res.cookie(config.cookieAuthName, user.username, { signed: true });
+						var expiration = config.expirationToken.coerceExpirationCookie();
+						res.cookie(config.cookieAuthName, user.username, { maxAge: expiration, httpOnly: true });
 
 						res.redirect('/');
 					});

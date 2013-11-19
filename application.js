@@ -5,7 +5,8 @@ var express = require('express'),
 	exphbs  = require('express3-handlebars'),
 	sass = require('node-sass'),
 	path = require('path'),
-	flash = require('connect-flash');
+	flash = require('connect-flash'),
+	helpers = require('./app/helpers/dynamicHelpers');
 	
 	// set handlebar as view engine
 	app.engine('.hbs', exphbs({ defaultLayout: '../../app/views/layouts/layout', extname: '.hbs' }));
@@ -30,7 +31,7 @@ var express = require('express'),
 
 	// session support
 	app.use(express.cookieParser(config.cookieSecret));
-	app.use(express.session({ cookie: { maxAge: 60000 }}));
+	app.use(express.session({ cookie: { maxAge: 15 * 60 * 1000 }}));
 	
 	// set support to flash message
 	app.use(flash());
@@ -50,6 +51,9 @@ var express = require('express'),
 	  app.use(express.errorHandler());
 	});
 	
+	// register all dynamic helpers
+	helpers.registerAll(app);
+		
 	// load controllers
 	require('./bootstrapper')(app);
 
@@ -59,8 +63,7 @@ var express = require('express'),
 	// attach lister to connected event
 	mongoose.connection.once('connected', function() {
 		console.log("Connected to mongodb");
-	});
-	
+	});	
 
 	// run
 	if (!module.parent) {
