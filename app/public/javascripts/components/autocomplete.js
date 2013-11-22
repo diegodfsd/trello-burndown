@@ -5,7 +5,9 @@
 			placeholder: 'Search',
 			multiple: true,
 			dataText: 'name',
-			dataValue: 'id'
+			dataValue: 'id',
+			minInputLength: 3,
+			cache: false
 		}
 	}
 	
@@ -15,8 +17,10 @@
 		$(this.$inputtext).select2({
 					allowClear: true,
 		            placeholder: options.placeholder || this.$inputtext.data('placeholder'),
-		            minimumInputLength: 3,
+		            minimumInputLength: options.minInputLength,
 					multiple: options.multiple,
+					quietMillis: 100,
+					cache: options.cache,
 		            ajax: {
 						contentType: "application/json",
 		                url: options.source || this.$inputtext.data('source'),

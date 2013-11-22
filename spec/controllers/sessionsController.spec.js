@@ -1,7 +1,7 @@
 require(__dirname + '../../support/spec_helper');
 
 var Browser = require("zombie"),
-	config = require('./app/config/configurations')(),
+	config = require(__dirname + '../../../app/config/configurations')(),
 	browser;
 
  
