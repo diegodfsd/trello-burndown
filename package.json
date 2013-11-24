@@ -16,7 +16,6 @@
 		"mongoose" : "3",
 		"node-sass" : "*",
 		"xcharts" : "0",
-		"connect-flash" : "*",
-		"select2" : "3"
+		"connect-flash" : "*"
 	}
 }
