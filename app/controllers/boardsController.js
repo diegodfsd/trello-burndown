@@ -5,9 +5,9 @@
 		client = rest.chain(mime);
 	
 	// GET: Get
-	exports.list = function(req, res, next){
+	exports.all = function(req, res, next){
 		var accessToken = req.user.accessToken,
-			url = "#{0}/members/me/boards/?key=#{1}&token=#{2}".interpolate(config.urlAPI, config.applicationKey, accessToken);
+			url = "#{0}/members/me/boards/?key=#{1}&token=#{2}&lists=all&fields=name,closed,url".interpolate(config.urlAPI, config.applicationKey, accessToken);
 
 		client({ path: url }).then(function (response) { 
 			var boards = response.entity
@@ -15,14 +15,27 @@
 							return !board.closed;
 						} )
 						.map( function convert( board ) {
-							return { id: board.id, name: board.name, url: board.url };
+							return { id: board.id, name: board.name, url: board.url, lists: board.lists };
 						} );
 		
 			res.json({ boards: boards });
 		});
-	};	
-})();
+	};
+	
+	exports.lists = function(req, res, next){
+		console.log( req.params.id );
+		var accessToken = req.user.accessToken,
+			url = "#{0}/boards/#{1}/lists/?key=#{2}&token=#{3}".interpolate(config.urlAPI, req.params.id, config.applicationKey, accessToken);
 
-//https://api.trello.com/1/search?query=portal&key=ff7de69eeeb64f13b5265d9d11cd0db9&token=32f799f4686460ec5bf98ff0540fb9addeffbc0e5b76d4d5571b643d7ac82522
+		client({ path: url }).then(function (response) { 
+			var lists = response.entity
+						.map( function convert( list ) {
+							return { id: list.id, name: list.name };
+						} );
+
+			res.json({ lists: lists });
+		});		
+	}	
+})();
 
 //http://jsfiddle.net/LUsMb/16/
