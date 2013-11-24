@@ -4,7 +4,7 @@
 			parameters = (currentPage || "").split('#'),
 			controllerName = parameters[0],
 	        actionName = parameters[1];
-
+			
 	    if (controllerName && actionName) {
 			controllers[controllerName][actionName]();
 	    }

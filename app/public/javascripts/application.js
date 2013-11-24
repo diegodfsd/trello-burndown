@@ -1,10 +1,17 @@
-;(function(context){
-	var App = context.Coachme = {};
+;(function($, context){
+	var App = context.App = {};
 	App.Controllers = {};
 
 	// Initialize App Javascript
 	// required to definy global settings
-	App.init = function()
-	{				
+	App.init = function( path )
+	{
+		generateCurrentPath( path );
 	};
-})(window);
+	
+})(jQuery, window);
+
+// Utils
+function generateCurrentPath( path ) {
+	$('head').append($('<meta />').attr('name', 'current_page').attr('content', path));
+}
