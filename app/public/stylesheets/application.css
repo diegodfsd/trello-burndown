@@ -148,3 +148,9 @@ li {
   font-size: 16px;
   line-height: 1.2em;
   word-wrap: break-word; }
+
+#new_sprint .input_boards {
+  width: 400px; }
+
+#new_sprint .input_lists {
+  width: 250px; }
