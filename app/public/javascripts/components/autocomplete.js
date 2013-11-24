@@ -7,7 +7,13 @@
 			dataText: 'name',
 			dataValue: 'id',
 			minInputLength: 3,
-			cache: false
+			cache: false,
+			params: function (term, page) {
+		                    return {
+		                        term: term,
+		                        page_limit: 10,
+		                    };
+		          }
 		}
 	}
 	
@@ -15,6 +21,7 @@
 		options = $.extend({}, this.defaultOptions, options);
 
 		$(this.$inputtext).select2({
+					selectOnBlur: true,
 					allowClear: true,
 		            placeholder: options.placeholder || this.$inputtext.data('placeholder'),
 		            minimumInputLength: options.minInputLength,
@@ -25,12 +32,7 @@
 						contentType: "application/json",
 		                url: options.source || this.$inputtext.data('source'),
 		                dataType: 'json',
-		                data: function (term, page) {
-		                    return {
-		                        term: term,
-		                        page_limit: 10,
-		                    };
-		                },
+		                data: options.params,
 		                results: function (data, page) {
 							if(!!options.propertyName)
 								return {results: data[options.propertyName]};
