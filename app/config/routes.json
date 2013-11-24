@@ -1,21 +1,25 @@
 [
 	{ "controller": "dashboard",
-   	  "routes": [
-		{ "method": "get", "path": "/", "action" : "index" }]
+   	"routes": [
+		{ "method": "get", "path": "/dashboard", "action" : "index" }]
 	},
 	
 	{ "controller": "sessions",
-   	  "routes": [
-		{ "method": "get", "path": "/sessions/signin", "action" : "signin" },
-		{ "method": "get", "path": "/sessions/callback", "action" : "callback" }]		
+  	"routes": [
+			{ "method": "get", "path": "/sessions/signin", "action" : "signin" },
+			{ "method": "get", "path": "/sessions/callback", "action" : "callback" }]		
 	},
 	
 	{ "controller": "sprints",
-	  "routes": []	
+	  	"routes": [
+		  	{ "method": "get", "path": "/sprints", "action": "index" },
+		  	{ "method": "get", "path": "/sprints/new", "action": "new" },
+		  	{ "method": "post", "path": "/sprints", "action": "create" }]	
 	 },
 	 
 	 { "controller" : "boards",
 	 	 "routes" : [
-		 { "method": "get", "path": "/boards/:id", "action" : "list" }]
+			 { "method": "get", "path": "/boards", "action" : "all" },
+		   { "method": "get", "path": "/boards/:id/lists", "action" : "lists" }]
 	 }
 ]

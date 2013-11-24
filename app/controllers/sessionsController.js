@@ -73,7 +73,7 @@ require(__dirname + '../../extensions/stringExtensions');
 						var expiration = config.expirationToken.coerceExpirationCookie();
 						res.cookie(config.cookieAuthName, user.username, { maxAge: expiration, httpOnly: true });
 
-						res.redirect('/');
+						res.redirect('/dashboard');
 					});
 				});
 			});
