@@ -1,13 +1,29 @@
-<form action="new_submit" method="get" accept-charset="utf-8">
-	<div id="sprint-board">
-		<p>
-			<label for="board">select a trello board:</label>
-			<input type="text" name="board" value="" id="board">
-		</p>
-		<p><input type="button" value="Continue &rarr;"></p>
-	</div>
+<div id="new_sprint">
+	<h1>New Sprint</h1>
+	<fieldset>
+		<form action="new_submit" method="post" accept-charset="utf-8">
+			<div id="sprint-board">
+				<p>
+					<label for="board">Trello board:</label>
+					<input type="text" name="board" id="board" placeholder="choose one board" class="input_boards">
+				</p>
+			</div>
 	
-	<div id="sprint-form">
-		<p><input type="submit" value="Save"></p>
-	</div>
-</form>
+			<div id="sprint-form">
+				<input type="hidden" name="title" id="title">
+				<p>
+					<label for="opening">Work days:</label>
+					<input type="text" name="opening" id="opening" class="datepicker">
+					<input type="text" name="closing" id="closing" class="datepicker">
+				</p>
+				
+				<p id="done-list-container">
+					<label for="done-list">Done list:</label>
+					<input type="text" name="done-list" id="done-list" class="input_lists">
+				</p>
+
+				<p><input type="submit" value="Save"></p>
+			</div>
+		</form>
+	</fieldset>
+</div>

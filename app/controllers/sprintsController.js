@@ -29,5 +29,15 @@
 
 				res.render('index', { sprints: sprints });			
 			});
-	};	
+	};
+	
+	// GET: New
+	exports.new = function(req, res, next){
+		res.render('new');
+	}	
+	
+	// POST: create
+	exports.create = function(req, res, next){
+		
+	}
 })();
