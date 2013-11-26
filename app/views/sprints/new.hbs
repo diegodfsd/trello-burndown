@@ -5,21 +5,31 @@
 			<div id="sprint-board">
 				<p>
 					<label for="board">Trello board:</label>
-					<input type="text" name="board" id="board" placeholder="choose one board" class="input_boards">
+					<input type="text" name="sprint[board]" id="board" placeholder="choose one board" class="input_boards">
 				</p>
 			</div>
 	
 			<div id="sprint-form">
-				<input type="hidden" name="title" id="title">
+				<input type="hidden" name="sprint[name]" id="name">
 				<p>
 					<label for="opening">Work days:</label>
-					<input type="text" name="opening" id="opening" class="datepicker">
-					<input type="text" name="closing" id="closing" class="datepicker">
+					<input type="text" name="sprint[opening]" id="opening" class="datepicker">
+					<input type="text" name="sprint[closing]" id="closing" class="datepicker">
+					<table border="0" cellspacing="5" cellpadding="5" id="workdays">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Work day?</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
 				</p>
 				
 				<p id="done-list-container">
 					<label for="done-list">Done list:</label>
-					<input type="text" name="done-list" id="done-list" class="input_lists">
+					<input type="text" name="sprint[done-list]" id="done-list" class="input_lists" placeholder="choose one list">
 				</p>
 
 				<p><input type="submit" value="Save"></p>
