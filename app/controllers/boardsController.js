@@ -7,7 +7,7 @@
 	// GET: Get
 	exports.all = function(req, res, next){
 		var accessToken = req.user.accessToken,
-			url = "#{0}/members/me/boards/?key=#{1}&token=#{2}&lists=all&fields=name,closed,url".interpolate(config.urlAPI, config.applicationKey, accessToken);
+			url = "#{0}/members/me/boards/?key=#{1}&token=#{2}&fields=name,closed,url".interpolate(config.urlAPI, config.applicationKey, accessToken);
 
 		client({ path: url }).then(function (response) { 
 			var boards = response.entity
@@ -15,7 +15,7 @@
 							return !board.closed;
 						} )
 						.map( function convert( board ) {
-							return { id: board.id, name: board.name, url: board.url, lists: board.lists };
+							return { id: board.id, name: board.name, url: board.url };
 						} );
 		
 			res.json({ boards: boards });
@@ -23,7 +23,6 @@
 	};
 	
 	exports.lists = function(req, res, next){
-		console.log( req.params.id );
 		var accessToken = req.user.accessToken,
 			url = "#{0}/boards/#{1}/lists/?key=#{2}&token=#{3}".interpolate(config.urlAPI, req.params.id, config.applicationKey, accessToken);
 
