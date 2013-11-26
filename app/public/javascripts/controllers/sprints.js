@@ -2,17 +2,19 @@
 	var sprints;
 	sprints = app.Controllers.sprints = {};
 	
-	sprints.new = function() {
+	sprints.new = function() {		
 		new AutoComplete($("#board")).Init({ minInputLength: 0, 
 											 source: '/boards',
 											 multiple: false,
 											 propertyName: 'boards'
 											});
+
+		new Workdays( $("#opening"), $("#closing"), $("#workdays") ).Init();
 									
 		$(".datepicker").datepicker();
 
 		$("form").submit(function(event){
-			$("#title").val( $("#board").select2('data').name );
+			$("#name").val( $("#board").select2('data').name );
 		});
 		
 		$("#board").on("change", function(){
