@@ -1,6 +1,6 @@
 *.sample
 .gitkeep
 /node_modules
-#**/config/configurations.js
+**/config/configurations.js
 data/
 data/*
