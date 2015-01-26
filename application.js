@@ -31,7 +31,8 @@ var express = require('express'),
 
 	// session support
 	app.use(express.cookieParser(config.cookieSecret));
-	app.use(express.session({ cookie: { maxAge: 15 * 60 * 1000 }}));
+	app.use(express.session({secret: config.sessionSecret, cookie: { maxAge: 15 * 60 * 1000 }}));
+	
 	
 	// set support to flash message
 	app.use(flash());

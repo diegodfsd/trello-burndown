@@ -21,8 +21,7 @@ require(__dirname + '../../extensions/stringExtensions');
 						  "http://localhost:3000/sessions/callback", 
 						  "HMAC-SHA1"),
 		User = require(__dirname + '../../models/user');
-		
-		
+
 	// GET: signin
 	exports.signin = function(req, res, next){
 		oauth.getOAuthRequestToken(function(error, token, tokenSecret, results) {

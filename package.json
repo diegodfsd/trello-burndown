@@ -6,6 +6,7 @@
 	"private" : true,
 	"keywords" : ["trello", "burndown"],
 	"dependencies" : {
+		"express": "3",
 		"express3-handlebars" : "*",
 		"underscore" : "*",
 		"ejs": "0",
